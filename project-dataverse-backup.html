@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dataverse Backup & Migration Solution — Prasad Priyadarshana</title>
+    <meta name="description" content="Selective Dataverse data migration and backup solution using Databricks and FetchXML — replacing full environment restores with targeted, on-demand migrations.">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="chat-widget.css">
+</head>
+<body data-page="projects">
+<main class="detail-page">
+
+    <a href="projects.html" class="back-link"><i class="fa-solid fa-arrow-left"></i> Back to projects</a>
+
+    <div class="detail-hero">
+        <div class="detail-meta-row">
+            <span class="tag">Client Project</span>
+            <span>SEER 365 (UK)</span>
+            <span>·</span>
+            <span>Oct 2025 – Present</span>
+            <span>·</span>
+            <span>Architect &amp; Developer</span>
+        </div>
+        <h1 class="detail-title">Dataverse Production-to-UAT Backup &amp; Migration Solution</h1>
+        <p class="detail-lead">A selective, on-demand Dataverse data migration platform built on Databricks — eliminating full environment restores by allowing specific users and their associated data to be migrated from Production to UAT without disrupting downstream integrations.</p>
+    </div>
+
+    <div class="detail-banner" style="background: linear-gradient(135deg, #1e1b4b 0%, #312e81 100%); min-height: 220px; display:flex; align-items:center; justify-content:center; border-radius:16px;">
+        <div style="text-align:center; color:#fff;">
+            <div style="font-size:3rem; margin-bottom:1rem;">🔄</div>
+            <div style="font-family:'DM Mono',monospace; font-size:0.9rem; color:#00df73; letter-spacing:0.08em;">Prod Dataverse → Databricks + FetchXML → UAT Dataverse</div>
+            <div style="font-size:1.3rem; font-weight:600; margin-top:0.5rem;">Selective Data Migration on Demand</div>
+            <div style="font-size:0.85rem; color:#94a3b8; margin-top:0.4rem;">Eliminated 1-day manual restore · Power Automate triggered</div>
+        </div>
+    </div>
+
+    <div class="prose">
+        <div class="author-row">
+            <img src="images/Prasad_Rathnayake_2.png" alt="Prasad Priyadarshana" class="author-avatar">
+            <div>
+                <div class="author-name">Prasad Priyadarshana</div>
+                <div class="author-meta"><span>Oct 2025 – Present</span><span>·</span><span>Architect &amp; Developer</span></div>
+            </div>
+        </div>
+
+        <hr>
+
+        <h2>Problem</h2>
+        <p>The existing approach for populating the UAT environment with production data required a <strong>complete Production Dataverse environment restoration into UAT</strong> whenever production data was needed for development or testing. This caused:</p>
+        <ul>
+            <li><strong>Significant rework</strong> — full environment restore is destructive and time-consuming</li>
+            <li><strong>Increased data volumes and storage costs</strong> — 30GB full restore when only specific records were needed</li>
+            <li><strong>Disruptions to downstream applications</strong>, reporting synchronisations, and integrations</li>
+            <li>A <strong>1-day manual restore process</strong> blocking development and testing work</li>
+        </ul>
+
+        <hr>
+
+        <h2>Solution</h2>
+        <p>Built a <strong>targeted migration approach</strong> that allows specific users and their associated data to be migrated from Production to UAT without replacing the entire environment.</p>
+
+        <h3>Architecture</h3>
+        <ul>
+            <li><strong>Databricks migration architecture:</strong> Integrates with Microsoft Dataverse APIs using <strong>FetchXML</strong> to retrieve only the required records for selected accounts/partners</li>
+            <li><strong>Data extraction, transformation, and migration framework:</strong> Writes selected datasets into UAT Dataverse tables while maintaining required relationships and data integrity</li>
+            <li><strong>Power Automate trigger:</strong> Integrated with Power Automate to provide a manual trigger mechanism — authorised users initiate migrations on demand via a simple button click</li>
+            <li><strong>Selective scope:</strong> Users specify which accounts or partners' data they want to migrate, keeping UAT lean and relevant</li>
+        </ul>
+
+        <h3>Results</h3>
+        <ul>
+            <li><strong>Eliminated the 1-day manual restore process</strong> — migrations now run on-demand in minutes</li>
+            <li><strong>Reduced UAT environment data volume by 67%</strong> (30GB → 10GB) through selective migration</li>
+            <li><strong>Zero disruption</strong> to downstream applications, reporting integrations, and synchronisations</li>
+            <li>Development and testing teams can get production-representative data whenever needed</li>
+        </ul>
+
+        <hr>
+
+        <h2>Technical Stack</h2>
+        <div class="table-wrapper">
+            <table class="detail-table">
+                <thead><tr><th>Component</th><th>Technology</th></tr></thead>
+                <tbody>
+                    <tr><td>Processing</td><td>Databricks (PySpark)</td></tr>
+                    <tr><td>Data Extraction</td><td>Dataverse API + FetchXML queries</td></tr>
+                    <tr><td>Source/Target</td><td>Microsoft Dataverse (Production → UAT)</td></tr>
+                    <tr><td>Trigger</td><td>Power Automate (manual on-demand)</td></tr>
+                    <tr><td>Scope Control</td><td>User-selectable accounts/partners</td></tr>
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+
+    <div class="detail-tags">
+        <span class="tag">Databricks</span>
+        <span class="tag">Dataverse API</span>
+        <span class="tag">FetchXML</span>
+        <span class="tag">Power Automate</span>
+        <span class="tag">Data Migration</span>
+        <span class="tag">PySpark</span>
+    </div>
+
+</main>
+
+<footer>
+    <p>&copy; 2026 Prasad Priyadarshana. All rights reserved.</p>
+    <div class="footer-links">
+        <a href="https://www.linkedin.com/in/prasad-priyadarshana-b44946104" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+        <a href="https://github.com/prasad1563" target="_blank" rel="noopener noreferrer">GitHub</a>
+        <a href="mailto:prasadpriyadarshana4@gmail.com">Email</a>
+    </div>
+</footer>
+
+<div id="nav-dock-wrap">
+    <nav class="nav-dock">
+        <a href="index.html" class="dock-item" data-nav="home" aria-label="Home"><i class="fa-solid fa-hand"></i><span class="dock-tip">Hi 👋</span></a>
+        <a href="projects.html" class="dock-item" data-nav="projects" aria-label="Projects"><i class="fa-solid fa-briefcase"></i><span class="dock-tip">Projects</span></a>
+        <a href="articles.html" class="dock-item" data-nav="blog" aria-label="Blog"><i class="fa-solid fa-book-open"></i><span class="dock-tip">Blog</span></a>
+        <a href="about.html" class="dock-item" data-nav="about" aria-label="About"><i class="fa-solid fa-user"></i><span class="dock-tip">About</span></a>
+    </nav>
+</div>
+<script src="main.js"></script>
+<script src="chat-widget.js"></script>
+</body>
+</html>

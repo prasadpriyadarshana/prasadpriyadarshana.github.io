@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Discover Partner Reporting — Prasad Priyadarshana</title>
+    <meta name="description" content="5-phase architectural transformation from legacy stored procedures to AI-powered Microsoft Fabric lakehouse for SEER 365 partner reporting.">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="chat-widget.css">
+</head>
+<body data-page="projects">
+<main class="detail-page">
+
+    <a href="projects.html" class="back-link"><i class="fa-solid fa-arrow-left"></i> Back to projects</a>
+
+    <div class="detail-hero">
+        <div class="detail-meta-row">
+            <span class="tag">Client Project</span>
+            <span>SEER 365 (UK)</span>
+            <span>·</span>
+            <span>Apr 2022 – Present</span>
+            <span>·</span>
+            <span>Architect &amp; Tech Lead</span>
+        </div>
+        <h1 class="detail-title">GYDE365 Discover Partner Reporting</h1>
+        <p class="detail-lead">A 5-phase architectural transformation of an enterprise partner reporting platform — from fragile stored procedures to a next-generation AI-powered Microsoft Fabric lakehouse, collectively powering 150+ Power BI report pages across three semantic models.</p>
+    </div>
+
+    <div class="detail-banner" style="background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%); min-height: 220px; display:flex; align-items:center; justify-content:center; border-radius:16px;">
+        <div style="text-align:center; color:#fff;">
+            <div style="font-size:3rem; margin-bottom:1rem;">⚡</div>
+            <div style="font-family:'DM Mono',monospace; font-size:0.9rem; color:#00df73; letter-spacing:0.08em;">SEER 365 · UK Enterprise Client</div>
+            <div style="font-size:1.3rem; font-weight:600; margin-top:0.5rem;">5-Phase Lakehouse Transformation</div>
+            <div style="font-size:0.85rem; color:#94a3b8; margin-top:0.4rem;">Apr 2022 → Present · 150+ Report Pages · 3 Semantic Models</div>
+        </div>
+    </div>
+
+    <div class="prose">
+        <div class="author-row">
+            <img src="images/Prasad_Rathnayake_2.png" alt="Prasad Priyadarshana" class="author-avatar">
+            <div>
+                <div class="author-name">Prasad Priyadarshana</div>
+                <div class="author-meta"><span>Apr 2022 – Present</span><span>·</span><span>Architect &amp; Tech Lead</span></div>
+            </div>
+        </div>
+
+        <hr>
+
+        <h2>Project Overview</h2>
+        <p>The Discover Partner Reporting platform underwent a <strong>4-phase architectural transformation</strong> over several years, evolving from a fragile relational backend into a high-performance cloud lakehouse and eventually a next-generation SaaS Microsoft Fabric AI engine. This ETL pipeline and Lakehouse architecture supports three Power BI semantic models, each designed and optimized for different reporting and analytical use cases, collectively powering <strong>150+ report pages</strong>.</p>
+
+        <ul>
+            <li><strong>SI (System Integrator) Reports</strong></li>
+            <li><strong>ISV (Independent Software Vendor) Reports</strong></li>
+            <li><strong>PPT (PowerPoint) Reports</strong> — Used to generate PowerPoint pages</li>
+        </ul>
+
+        <div class="table-wrapper">
+            <table class="detail-table">
+                <thead><tr><th>Phase</th><th>Period</th><th>Architecture</th><th>Key Outcome</th></tr></thead>
+                <tbody>
+                    <tr><td><strong>Phase 1</strong></td><td>Apr 2022 – Oct 2023</td><td>Dataverse → SQL Server stored procedures</td><td>Baseline reporting established, 20–25 pages</td></tr>
+                    <tr><td><strong>Phase 2</strong></td><td>Nov 2023 – Sep 2024</td><td>Synapse Link + Databricks medallion</td><td>64% cost cut, 6× faster refresh</td></tr>
+                    <tr><td><strong>Phase 3</strong></td><td>Oct 2024 – Jun 2025</td><td>Microsoft Fabric F32 + CI/CD</td><td>10M+ rows, 2× load speed, flat cost</td></tr>
+                    <tr><td><strong>Phase 4</strong></td><td>Jul 2025 – Present</td><td>Fabric F64 + Databricks compute split + Genie</td><td>50% additional cost reduction, AI chat</td></tr>
+                    <tr><td><strong>Phase 5</strong></td><td>Mar 2026 – Present</td><td>Fabric Data Agents + Databricks Genie POC</td><td>Conversational BI evaluation &amp; deployment</td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <hr>
+
+        <h2>Phase 1 — Foundations &amp; Legacy Stored Procedure Engine</h2>
+        <p><em>April 2022 to October 2023</em></p>
+
+        <h3>Architecture</h3>
+        <p>The initial implementation was constructed around <strong>Microsoft Dataverse</strong> as the primary operational source. Data synchronization was handled via <strong>Power Automate flows</strong> that pushed records directly into an Azure SQL Server relational database (Bronze layer schema). Within SQL Server, complex transformations were executed using nested stored procedures, and views were created to support silver and gold layers. Reports were delivered via Power BI import mode with Power BI Embedded (A capacity) over a web app with AD authentication.</p>
+        <p>Under this architecture the team delivered around <strong>20–25 Power BI report pages</strong>.</p>
+
+        <h3>Bottlenecks Identified</h3>
+        <ul>
+            <li>Power Automate flows <strong>frequently failed, skipped triggers, or suffered heavy delays</strong> when more than a few record updates hit Dataverse within a 30-second window</li>
+            <li>Backend ETL stored procedure syncs took <strong>over one hour</strong> to execute</li>
+            <li>Power BI report refreshes took <strong>over 10 minutes</strong>, limiting total backend and frontend sync to a <strong>3-hour interval</strong></li>
+        </ul>
+
+        <hr>
+
+        <h2>Phase 2 — Cloud Modernization to Databricks Lakehouse</h2>
+        <p><em>November 2023 to September 2024</em></p>
+
+        <h3>Architecture</h3>
+        <p>To resolve persistent flow failures and long ETL windows, a modern Lakehouse architecture was <strong>architected, proven via POC, and deployed to production</strong>:</p>
+        <ul>
+            <li><strong>Azure Synapse Link</strong> replaced Power Automate flows, syncing Dataverse tables into Synapse Lake databases in near-real-time — eliminating 100% of previous flow trigger failures</li>
+            <li><strong>Databricks PySpark/Scala notebooks</strong> extracted tables from Synapse Lake via serverless SQL endpoints and performed scalable transformations, building clean Silver and Gold Lakehouse layers</li>
+            <li>The data model was refactored into a <strong>Snowflake Schema</strong>, removing redundant attributes to drastically speed up report querying</li>
+        </ul>
+
+        <h3>Results</h3>
+        <ul>
+            <li>Backend sync and Power BI refresh reduced from <strong>3 hours to 30 minutes (6× faster)</strong></li>
+            <li>Monthly cloud spend reduced from <strong>£7,000 to £2,500/month — a 64% cost reduction</strong></li>
+            <li>100% elimination of pipeline sync failures</li>
+        </ul>
+
+        <h3>Bottleneck at Scale</h3>
+        <p>After a year in production, the main report file expanded to over <strong>0.5 GB with 75+ complex pages</strong>, and the primary fact table grew from 1 million to over <strong>10 million rows</strong>, causing Power BI Embedded capacity degradation.</p>
+
+        <hr>
+
+        <h2>Phase 3 — Migration to Microsoft Fabric Platform</h2>
+        <p><em>October 2024 to June 2025</em></p>
+
+        <h3>Architecture</h3>
+        <ul>
+            <li><strong>Fabric Link</strong> mirrored Dataverse tables into Fabric Lakehouse (Bronze Layer) in near-real-time</li>
+            <li><strong>Fabric PySpark/Scala notebooks</strong> executed multi-stage transformations orchestrated within centralized Fabric pipelines using <strong>DAG (Directed Acyclic Graph)</strong> notebook activities</li>
+            <li>Single-location orchestration with automated error logging, native Git workspace integration, and <strong>automated CI/CD deployment pipelines</strong> (Dev → UAT → Prod) with dynamic semantic model parameterization</li>
+            <li><strong>Azure DevOps</strong> for source code management; <strong>Fabric Deployment Pipelines</strong> for environment promotion</li>
+        </ul>
+
+        <h3>Results</h3>
+        <ul>
+            <li>Processing speed <strong>doubled</strong> on F32 capacity</li>
+            <li>Report load times <strong>accelerated significantly</strong></li>
+            <li>Operating costs remained <strong>flat</strong> despite 10× data volume growth</li>
+            <li>Platform scaled to <strong>10M+ fact-table rows and 40+ new report pages</strong></li>
+        </ul>
+
+        <hr>
+
+        <h2>Phase 4 — Cost Reduction &amp; Model Optimizations</h2>
+        <p><em>July 2025 to Present</em></p>
+
+        <h3>Architecture</h3>
+        <p>With increased concurrent embed users, the infrastructure was <strong>upgraded to F64 Fabric Capacity</strong> based on Fabric Capacity Metrics App analysis. Key optimizations:</p>
+        <ul>
+            <li><strong>Compute separation:</strong> Heavy, resource-intensive pipelines migrated to <strong>Databricks managed clusters</strong>; lightweight pipelines moved to <strong>Databricks serverless compute</strong> — avoiding Fabric shared capacity consumption for Spark workloads</li>
+            <li><strong>Incremental refreshes:</strong> Custom Databricks scripts implemented incremental processing for fact tables in Power BI semantic models — only newly added or modified data is processed, significantly reducing refresh costs</li>
+            <li><strong>Copilot Studio AI agents</strong> integrated to automate dataset deliveries to partner users, eliminating manual report generation and distribution</li>
+            <li><strong>Databricks Genie POC</strong> built and embedded into a custom Flask/JavaScript/HTML web app for conversational analytics</li>
+        </ul>
+
+        <h3>Results</h3>
+        <ul>
+            <li><strong>50% additional reduction</strong> in overall platform cost</li>
+            <li>Greater flexibility to scale compute independently of shared Fabric capacity</li>
+            <li>AI-assisted partner reporting via Copilot Studio at no net cost increase</li>
+        </ul>
+
+        <hr>
+
+        <h2>Phase 5 — Conversational Analytics POC (Fabric Data Agents &amp; Databricks Genie)</h2>
+        <p><em>March 2026 to Present</em></p>
+
+        <h3>Evaluation</h3>
+        <p>Led a <strong>head-to-head evaluation</strong> of two AI-assisted analytics options using the same data domain and benchmark questions:</p>
+
+        <div class="table-wrapper">
+            <table class="detail-table">
+                <thead><tr><th>Platform</th><th>Data Sources</th><th>Embedding</th><th>Outcome</th></tr></thead>
+                <tbody>
+                    <tr><td><strong>Fabric Data Agent</strong></td><td>Fabric Lakehouse + Power BI semantic model</td><td>Limited to Fabric ecosystem</td><td>Evaluated, not selected</td></tr>
+                    <tr><td><strong>Databricks Genie</strong></td><td>Gold-layer Unity Catalog tables</td><td>Embeds into Flask web app</td><td><strong>Selected</strong></td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <p>Databricks Genie was selected because it fit best with the Databricks-based processing layer from Phase 4, kept workloads off the shared Fabric capacity, and could be embedded directly into the existing Flask web application.</p>
+
+        <h3>Genie Implementation (Dev Environment)</h3>
+        <ul>
+            <li><strong>Data sources:</strong> Curated Gold-layer fact and dimension tables from Unity Catalog; table/column descriptions added, irrelevant fields hidden</li>
+            <li><strong>Relationships:</strong> Primary/foreign key joins configured between fact and dimension tables (snowflake schema) for correct multi-table joins</li>
+            <li><strong>Instructions:</strong> Domain-specific business definitions, KPI logic, default filters, date/fiscal period handling, and business synonyms</li>
+            <li><strong>Sample SQL queries:</strong> Parameterised examples for most common and complex questions — multi-join aggregations, period-over-period comparisons</li>
+            <li><strong>Testing:</strong> Benchmark set of real business questions with expected SQL; iteratively refined descriptions and examples</li>
+        </ul>
+
+        <hr>
+
+        <h2>Technical Stack</h2>
+        <div class="table-wrapper">
+            <table class="detail-table">
+                <thead><tr><th>Component</th><th>Technology</th></tr></thead>
+                <tbody>
+                    <tr><td>Source System</td><td>Microsoft Dataverse</td></tr>
+                    <tr><td>Ingestion (Ph1)</td><td>Power Automate → Azure SQL Server</td></tr>
+                    <tr><td>Ingestion (Ph2–3)</td><td>Azure Synapse Link / Fabric Link</td></tr>
+                    <tr><td>Processing (Ph2)</td><td>Databricks PySpark/Scala (Medallion Architecture)</td></tr>
+                    <tr><td>Processing (Ph3)</td><td>Fabric PySpark/Scala notebooks + DAG Pipelines</td></tr>
+                    <tr><td>Processing (Ph4)</td><td>Databricks managed + serverless compute</td></tr>
+                    <tr><td>Storage</td><td>Azure Synapse Lake DB → Microsoft Fabric Lakehouse</td></tr>
+                    <tr><td>Reporting</td><td>Power BI (Import → Direct Lake), Power BI Embedded</td></tr>
+                    <tr><td>CI/CD</td><td>Azure DevOps + Fabric Deployment Pipelines</td></tr>
+                    <tr><td>AI Layer</td><td>Copilot Studio + Databricks Genie</td></tr>
+                    <tr><td>Embedding</td><td>Python Flask + JavaScript + HTML/CSS</td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <hr>
+
+        <h2>Key Results Summary</h2>
+        <ul>
+            <li><strong>64% cost reduction</strong> — £7,000/month → £2,500/month (Phase 2)</li>
+            <li><strong>Additional 50% cost reduction</strong> from compute optimization (Phase 4)</li>
+            <li><strong>6× faster data refresh</strong> — 3 hours → 30 minutes</li>
+            <li><strong>10× data scale</strong> — 1M → 10M+ fact-table rows, flat cost</li>
+            <li><strong>150+ Power BI report pages</strong> across 3 semantic models</li>
+            <li><strong>100% elimination</strong> of pipeline sync failures</li>
+            <li><strong>Sub-second query performance</strong> via Direct Lake mode</li>
+        </ul>
+
+    </div>
+
+    <div class="detail-tags">
+        <span class="tag">Microsoft Fabric</span>
+        <span class="tag">Databricks</span>
+        <span class="tag">Azure Synapse</span>
+        <span class="tag">PySpark</span>
+        <span class="tag">Power BI</span>
+        <span class="tag">Dataverse</span>
+        <span class="tag">Databricks Genie</span>
+        <span class="tag">Copilot Studio</span>
+        <span class="tag">CI/CD</span>
+        <span class="tag">Lakehouse</span>
+    </div>
+
+</main>
+
+<footer>
+    <p>&copy; 2026 Prasad Priyadarshana. All rights reserved.</p>
+    <div class="footer-links">
+        <a href="https://www.linkedin.com/in/prasad-priyadarshana-b44946104" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+        <a href="https://github.com/prasad1563" target="_blank" rel="noopener noreferrer">GitHub</a>
+        <a href="mailto:prasadpriyadarshana4@gmail.com">Email</a>
+    </div>
+</footer>
+
+<div id="nav-dock-wrap">
+    <nav class="nav-dock">
+        <a href="index.html" class="dock-item" data-nav="home" aria-label="Home"><i class="fa-solid fa-hand"></i><span class="dock-tip">Hi 👋</span></a>
+        <a href="projects.html" class="dock-item" data-nav="projects" aria-label="Projects"><i class="fa-solid fa-briefcase"></i><span class="dock-tip">Projects</span></a>
+        <a href="articles.html" class="dock-item" data-nav="blog" aria-label="Blog"><i class="fa-solid fa-book-open"></i><span class="dock-tip">Blog</span></a>
+        <a href="about.html" class="dock-item" data-nav="about" aria-label="About"><i class="fa-solid fa-user"></i><span class="dock-tip">About</span></a>
+    </nav>
+</div>
+<script src="main.js"></script>
+<script src="chat-widget.js"></script>
+</body>
+</html>

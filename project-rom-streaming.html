@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ROM In-Portal Live Reporting — Prasad Priyadarshana</title>
+    <meta name="description" content="Sub-15-second real-time Power BI reporting via Databricks Structured Streaming over Azure Event Hubs into Fabric Lakehouse Direct Lake mode.">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="chat-widget.css">
+</head>
+<body data-page="projects">
+<main class="detail-page">
+
+    <a href="projects.html" class="back-link"><i class="fa-solid fa-arrow-left"></i> Back to projects</a>
+
+    <div class="detail-hero">
+        <div class="detail-meta-row">
+            <span class="tag">Client Project</span>
+            <span>SEER 365 (UK)</span>
+            <span>·</span>
+            <span>May 2025 – May 2026</span>
+            <span>·</span>
+            <span>Architect &amp; Tech Lead</span>
+        </div>
+        <h1 class="detail-title">ROM In-Portal Snapshot Live Reporting</h1>
+        <p class="detail-lead">An event-driven streaming architecture delivering sub-15-second real-time Power BI analytics embedded in a client portal — replacing a 2–3 month React development estimate with a production solution delivered in 2–3 weeks.</p>
+    </div>
+
+    <div class="detail-banner" style="background: linear-gradient(135deg, #0f172a 0%, #1e3a5f 100%); min-height: 220px; display:flex; align-items:center; justify-content:center; border-radius:16px;">
+        <div style="text-align:center; color:#fff;">
+            <div style="font-size:3rem; margin-bottom:1rem;">🌊</div>
+            <div style="font-family:'DM Mono',monospace; font-size:0.9rem; color:#00df73; letter-spacing:0.08em;">Event Hubs → Databricks Streaming → Fabric Direct Lake</div>
+            <div style="font-size:1.3rem; font-weight:600; margin-top:0.5rem;">Sub-15-Second End-to-End Latency</div>
+            <div style="font-size:0.85rem; color:#94a3b8; margin-top:0.4rem;">2–3 weeks delivery · Saved 2–3 months of React development</div>
+        </div>
+    </div>
+
+    <div class="prose">
+        <div class="author-row">
+            <img src="images/Prasad_Rathnayake_2.png" alt="Prasad Priyadarshana" class="author-avatar">
+            <div>
+                <div class="author-name">Prasad Priyadarshana</div>
+                <div class="author-meta"><span>May 2025 – May 2026</span><span>·</span><span>Architect &amp; Tech Lead</span></div>
+            </div>
+        </div>
+
+        <hr>
+
+        <h2>Business Problem</h2>
+        <p>The client required <strong>real-time analytics embedded directly into their portal</strong>, used by several Microsoft staff users, demanding sub-15-second data processing and rendering upon user actions.</p>
+        <ul>
+            <li>Traditional <strong>Direct Query against relational databases</strong> was too slow for the latency requirements</li>
+            <li>Building custom analytics in <strong>React UI</strong> was estimated at <strong>2–3 months of development effort</strong></li>
+            <li>The client needed a production-ready solution urgently, with CI/CD deployment</li>
+        </ul>
+
+        <hr>
+
+        <h2>Solution: Event-Driven Streaming Architecture</h2>
+
+        <h3>Architecture Flow</h3>
+        <div class="table-wrapper">
+            <table class="detail-table">
+                <thead><tr><th>Step</th><th>Component</th><th>Detail</th></tr></thead>
+                <tbody>
+                    <tr><td>1. Trigger</td><td>Portal button action</td><td>User action sends high-volume JSON payloads</td></tr>
+                    <tr><td>2. Ingest</td><td>Azure Event Hubs (Kafka endpoint)</td><td>Receives JSON payload events</td></tr>
+                    <tr><td>3. Stream</td><td>Databricks PySpark Structured Streaming</td><td>Reads via Kafka endpoint with instant triggers</td></tr>
+                    <tr><td>4. Transform</td><td>PySpark transformations</td><td>JSON unbase64 decoding, exploding, cleansing with precise checkpointing</td></tr>
+                    <tr><td>5. Store</td><td>Fabric Lakehouse Delta tables</td><td>Writes output directly to Delta format</td></tr>
+                    <tr><td>6. Serve</td><td>Power BI Direct Lake mode</td><td>Instant report loads with no import latency</td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <hr>
+
+        <h2>Technical Implementation</h2>
+
+        <h3>Databricks PySpark Structured Streaming</h3>
+        <p>The Structured Streaming job was engineered with several critical design decisions:</p>
+        <ul>
+            <li><strong>Kafka endpoint integration:</strong> Connected to Azure Event Hubs via Kafka-compatible endpoint for maximum throughput and reliability</li>
+            <li><strong>Instant trigger mode:</strong> Configured with continuous processing triggers rather than micro-batch intervals to minimise latency</li>
+            <li><strong>JSON base64 unboxing:</strong> Portal payloads were base64-encoded nested JSON — the pipeline decodes, flattens and cleanses the structure on arrival</li>
+            <li><strong>Precisely checkpointed:</strong> Exactly-once processing semantics via Structured Streaming checkpointing to prevent duplicate reads during cluster restarts</li>
+            <li><strong>Schema enforcement:</strong> Strict schema applied at ingest to catch malformed events before they reach the Lakehouse</li>
+        </ul>
+
+        <h3>Power BI Direct Lake Mode</h3>
+        <p>Output Delta tables written to Fabric Lakehouse are consumed by Power BI in <strong>Direct Lake mode</strong> — a Fabric-exclusive feature that reads Parquet files directly from the Lakehouse without import or DirectQuery overhead, delivering near-instant report loads even on large datasets.</p>
+
+        <h3>CI/CD Deployment</h3>
+        <p>The complete production solution was deployed with Git-based CI/CD pipelines, enabling controlled promotion from Dev → UAT → Production environments.</p>
+
+        <hr>
+
+        <h2>Results</h2>
+        <ul>
+            <li><strong>End-to-end latency: under 15 seconds</strong> from user portal action to Power BI report update</li>
+            <li><strong>2–3 weeks delivery</strong> vs 2–3 months estimated for a custom React implementation</li>
+            <li><strong>Zero duplicate processing</strong> via exactly-once Structured Streaming checkpointing</li>
+            <li><strong>Full production deployment</strong> with Git CI/CD from day one</li>
+        </ul>
+
+        <hr>
+
+        <h2>Technical Stack</h2>
+        <div class="table-wrapper">
+            <table class="detail-table">
+                <thead><tr><th>Component</th><th>Technology</th></tr></thead>
+                <tbody>
+                    <tr><td>Event Streaming</td><td>Azure Event Hubs (Kafka endpoint)</td></tr>
+                    <tr><td>Stream Processing</td><td>Databricks PySpark Structured Streaming</td></tr>
+                    <tr><td>Transformations</td><td>PySpark (JSON decoding, explode, cleanse)</td></tr>
+                    <tr><td>Storage</td><td>Microsoft Fabric Lakehouse (Delta tables)</td></tr>
+                    <tr><td>Reporting</td><td>Power BI Direct Lake mode</td></tr>
+                    <tr><td>CI/CD</td><td>Git + Fabric Deployment Pipelines</td></tr>
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+
+    <div class="detail-tags">
+        <span class="tag">Databricks Structured Streaming</span>
+        <span class="tag">Azure Event Hubs</span>
+        <span class="tag">Kafka</span>
+        <span class="tag">PySpark</span>
+        <span class="tag">Microsoft Fabric</span>
+        <span class="tag">Power BI Direct Lake</span>
+        <span class="tag">Real-Time</span>
+        <span class="tag">Delta Lake</span>
+    </div>
+
+</main>
+
+<footer>
+    <p>&copy; 2026 Prasad Priyadarshana. All rights reserved.</p>
+    <div class="footer-links">
+        <a href="https://www.linkedin.com/in/prasad-priyadarshana-b44946104" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+        <a href="https://github.com/prasad1563" target="_blank" rel="noopener noreferrer">GitHub</a>
+        <a href="mailto:prasadpriyadarshana4@gmail.com">Email</a>
+    </div>
+</footer>
+
+<div id="nav-dock-wrap">
+    <nav class="nav-dock">
+        <a href="index.html" class="dock-item" data-nav="home" aria-label="Home"><i class="fa-solid fa-hand"></i><span class="dock-tip">Hi 👋</span></a>
+        <a href="projects.html" class="dock-item" data-nav="projects" aria-label="Projects"><i class="fa-solid fa-briefcase"></i><span class="dock-tip">Projects</span></a>
+        <a href="articles.html" class="dock-item" data-nav="blog" aria-label="Blog"><i class="fa-solid fa-book-open"></i><span class="dock-tip">Blog</span></a>
+        <a href="about.html" class="dock-item" data-nav="about" aria-label="About"><i class="fa-solid fa-user"></i><span class="dock-tip">About</span></a>
+    </nav>
+</div>
+<script src="main.js"></script>
+<script src="chat-widget.js"></script>
+</body>
+</html>

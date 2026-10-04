@@ -1,0 +1,11 @@
+# Dependencies
+node_modules/
+chat-worker/node_modules/
+
+# Environment secrets
+.dev.vars
+chat-worker/.dev.vars
+
+# Wrangler
+.wrangler/
+chat-worker/.wrangler/

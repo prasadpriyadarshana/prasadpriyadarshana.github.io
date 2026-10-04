@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GYDE365 Qualify Analytics — Prasad Priyadarshana</title>
+    <meta name="description" content="Secure usage analytics and partner reporting platform — Google Analytics to ADLS Gen2 via Databricks with partner-level row security.">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="chat-widget.css">
+</head>
+<body data-page="projects">
+<main class="detail-page">
+
+    <a href="projects.html" class="back-link"><i class="fa-solid fa-arrow-left"></i> Back to projects</a>
+
+    <div class="detail-hero">
+        <div class="detail-meta-row">
+            <span class="tag">Client Project</span>
+            <span>SEER 365 (UK)</span>
+            <span>·</span>
+            <span>Mar 2024 – Present</span>
+            <span>·</span>
+            <span>Architect &amp; Developer</span>
+        </div>
+        <h1 class="detail-title">GYDE365 Qualify — Analytics &amp; Partner Reporting</h1>
+        <p class="detail-lead">A secure usage analytics and partner reporting solution built on ADLS Gen2, Databricks, and Power BI — allowing partners to access only their own usage data from Google Analytics without direct access to the underlying environment.</p>
+    </div>
+
+    <div class="detail-banner" style="background: linear-gradient(135deg, #1a1a2e 0%, #2d1b69 100%); min-height: 220px; display:flex; align-items:center; justify-content:center; border-radius:16px;">
+        <div style="text-align:center; color:#fff;">
+            <div style="font-size:3rem; margin-bottom:1rem;">📊</div>
+            <div style="font-family:'DM Mono',monospace; font-size:0.9rem; color:#00df73; letter-spacing:0.08em;">Google Analytics → ADLS Gen2 → Databricks → Power BI</div>
+            <div style="font-size:1.3rem; font-weight:600; margin-top:0.5rem;">Secure Partner Usage Analytics</div>
+            <div style="font-size:0.85rem; color:#94a3b8; margin-top:0.4rem;">Row-level security · Partner-scoped data access</div>
+        </div>
+    </div>
+
+    <div class="prose">
+        <div class="author-row">
+            <img src="images/Prasad_Rathnayake_2.png" alt="Prasad Priyadarshana" class="author-avatar">
+            <div>
+                <div class="author-name">Prasad Priyadarshana</div>
+                <div class="author-meta"><span>Mar 2024 – Present</span><span>·</span><span>Architect &amp; Developer</span></div>
+            </div>
+        </div>
+
+        <hr>
+
+        <h2>Project Overview</h2>
+        <p>Designed and developed a <strong>secure usage analytics and partner reporting solution</strong> with Azure Data Lake Storage Gen2 (ADLS Gen2) as the primary data source. The client's web applications captured usage data through <strong>Google Analytics</strong>, periodically exported as CSV datasets delivered to dedicated ADLS Gen2 containers.</p>
+
+        <hr>
+
+        <h2>Architecture</h2>
+
+        <h3>Data Pipeline</h3>
+        <ul>
+            <li><strong>Source:</strong> Google Analytics CSV exports delivered to ADLS Gen2 containers on a scheduled basis</li>
+            <li><strong>Processing:</strong> Databricks jobs and PySpark notebooks for data ingestion, transformation, cleansing, and preparation</li>
+            <li><strong>Reporting:</strong> Power BI data model and Power Query transformations designed for usage analytics reporting</li>
+        </ul>
+
+        <h3>Partner Security Model</h3>
+        <p>A critical requirement was enabling external partners to view only their own usage data. The solution implemented:</p>
+        <ul>
+            <li><strong>Partner-level Row-Level Security (RLS)</strong> in Power BI based on partner email authentication</li>
+            <li>Each partner can securely access <strong>only their relevant usage data</strong> without direct access to the Google Analytics environment</li>
+            <li>A centralised and controlled reporting layer that maintains <strong>appropriate data access controls</strong> while enabling external sharing</li>
+        </ul>
+
+        <hr>
+
+        <h2>Technical Stack</h2>
+        <div class="table-wrapper">
+            <table class="detail-table">
+                <thead><tr><th>Component</th><th>Technology</th></tr></thead>
+                <tbody>
+                    <tr><td>Source</td><td>Google Analytics (CSV exports)</td></tr>
+                    <tr><td>Storage</td><td>Azure Data Lake Storage Gen2 (ADLS Gen2)</td></tr>
+                    <tr><td>Processing</td><td>Databricks, PySpark notebooks</td></tr>
+                    <tr><td>Reporting</td><td>Power BI (data model + Power Query)</td></tr>
+                    <tr><td>Security</td><td>Power BI Row-Level Security (email-based)</td></tr>
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+
+    <div class="detail-tags">
+        <span class="tag">Databricks</span>
+        <span class="tag">ADLS Gen2</span>
+        <span class="tag">PySpark</span>
+        <span class="tag">Power BI</span>
+        <span class="tag">Google Analytics</span>
+        <span class="tag">Row-Level Security</span>
+        <span class="tag">Partner Reporting</span>
+    </div>
+
+</main>
+
+<footer>
+    <p>&copy; 2026 Prasad Priyadarshana. All rights reserved.</p>
+    <div class="footer-links">
+        <a href="https://www.linkedin.com/in/prasad-priyadarshana-b44946104" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+        <a href="https://github.com/prasad1563" target="_blank" rel="noopener noreferrer">GitHub</a>
+        <a href="mailto:prasadpriyadarshana4@gmail.com">Email</a>
+    </div>
+</footer>
+
+<div id="nav-dock-wrap">
+    <nav class="nav-dock">
+        <a href="index.html" class="dock-item" data-nav="home" aria-label="Home"><i class="fa-solid fa-hand"></i><span class="dock-tip">Hi 👋</span></a>
+        <a href="projects.html" class="dock-item" data-nav="projects" aria-label="Projects"><i class="fa-solid fa-briefcase"></i><span class="dock-tip">Projects</span></a>
+        <a href="articles.html" class="dock-item" data-nav="blog" aria-label="Blog"><i class="fa-solid fa-book-open"></i><span class="dock-tip">Blog</span></a>
+        <a href="about.html" class="dock-item" data-nav="about" aria-label="About"><i class="fa-solid fa-user"></i><span class="dock-tip">About</span></a>
+    </nav>
+</div>
+<script src="main.js"></script>
+<script src="chat-widget.js"></script>
+</body>
+</html>

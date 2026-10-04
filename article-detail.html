@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Article — Prasad Priyadarshana</title>
+    <meta name="description" content="An article by Prasad Priyadarshana on data engineering, cloud platforms, and analytics.">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="chat-widget.css">
+</head>
+
+<body data-page="blog">
+
+    <main class="detail-page" id="article-detail">
+
+        <a href="articles.html" class="back-link"><i class="fa-solid fa-arrow-left"></i> Back to blog</a>
+
+        <div class="detail-hero">
+            <div class="detail-meta-row">
+                <span class="tag">Article</span>
+                <span id="detail-date">May 2026</span>
+                <span>·</span>
+                <span id="detail-read-time">4 min read</span>
+            </div>
+            <h1 class="detail-title" id="detail-title">Article Title</h1>
+            <p class="detail-lead" id="detail-desc">Article summary goes here...</p>
+        </div>
+
+        <!-- Article Body -->
+        <div class="prose">
+            <div class="author-row">
+                <img src="images/Prasad_Rathnayake_2.png" alt="Prasad Priyadarshana" class="author-avatar">
+                <div>
+                    <div class="author-name">Prasad Priyadarshana</div>
+                    <div class="author-meta">
+                        <span id="detail-date-2">May 2026</span>
+                        <span>·</span>
+                        <span id="detail-read-time-2">4 min read</span>
+                    </div>
+                </div>
+            </div>
+
+            <hr>
+
+            <div id="detail-content">
+                <h2>Overview</h2>
+                <p>Full article content goes here.</p>
+            </div>
+        </div>
+
+        <!-- Tags -->
+        <div class="detail-tags" id="detail-tags">
+        </div>
+
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Prasad Priyadarshana. All rights reserved.</p>
+        <div class="footer-links">
+            <a href="https://www.linkedin.com/in/prasad-priyadarshana-b44946104" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+            <a href="https://github.com/prasad1563" target="_blank" rel="noopener noreferrer">GitHub</a>
+            <a href="mailto:prasadpriyadarshana4@gmail.com">Email</a>
+        </div>
+    </footer>
+
+    <div id="nav-dock-wrap">
+        <nav class="nav-dock">
+            <a href="index.html" class="dock-item" data-nav="home" aria-label="Home">
+                <i class="fa-solid fa-hand"></i>
+                <span class="dock-tip">Hi 👋</span>
+            </a>
+            <a href="projects.html" class="dock-item" data-nav="projects" aria-label="Projects">
+                <i class="fa-solid fa-briefcase"></i>
+                <span class="dock-tip">Projects</span>
+            </a>
+            <a href="articles.html" class="dock-item" data-nav="blog" aria-label="Blog">
+                <i class="fa-solid fa-book-open"></i>
+                <span class="dock-tip">Blog</span>
+            </a>
+            <a href="about.html" class="dock-item" data-nav="about" aria-label="About">
+                <i class="fa-solid fa-user"></i>
+                <span class="dock-tip">About</span>
+            </a>
+        </nav>
+    </div>
+
+    <script src="main.js"></script>
+    <script src="chat-widget.js"></script>
+    <script>
+        const params = new URLSearchParams(window.location.search);
+        const articleId = params.get('id');
+
+        const articles = {
+            'scaling-react': {
+                date: 'May 2026',
+                readTime: '5 min read',
+                title: 'Scaling React Applications',
+                desc: 'An in-depth look at state management and component architecture for large-scale apps.',
+                tags: ['Engineering', 'React', 'Architecture', 'Frontend'],
+                content: `
+                    <h2>Why scale matters</h2>
+                    <p>As React apps grow, state boundaries, bundle size, and render patterns become the main bottlenecks. Planning folder structure and data flow early saves costly refactors later.</p>
+                    <p>The key insight is that scaling isn't just about handling more users — it's about maintaining developer velocity as the codebase grows. A well-architected application allows teams to work independently on features without stepping on each other's toes.</p>
+
+                    <h2>Practical patterns</h2>
+                    <p>Use feature-based modules, colocate hooks with UI, and prefer composition over prop drilling. Tools like React Query or Zustand can simplify server and client state when used with clear conventions.</p>
+                    <p>The most impactful patterns I've found are:</p>
+                    <ul>
+                        <li><strong>Feature slices:</strong> Group all code for a feature (components, hooks, utils, tests) in one directory</li>
+                        <li><strong>Barrel exports:</strong> Each feature exposes a clean public API through an index file</li>
+                        <li><strong>Shared kernel:</strong> Common utilities and UI components live in a shared layer</li>
+                        <li><strong>Dependency rules:</strong> Features can import from shared, but never from each other</li>
+                    </ul>
+
+                    <h2>Takeaways</h2>
+                    <p>Measure before optimizing, document architectural decisions, and keep components focused on a single responsibility. The best architectures are the ones your team can actually follow consistently.</p>
+                `
+            },
+            'psychology-of-blue': {
+                date: 'April 2026',
+                readTime: '4 min read',
+                title: 'The Psychology of Blue',
+                desc: 'Why modern tech brands gravitate towards blue palettes and glowing accents.',
+                tags: ['Design', 'UI/UX', 'Color Theory', 'Branding'],
+                content: `
+                    <h2>Trust and clarity</h2>
+                    <p>Blue is associated with reliability and professionalism, which makes it a natural fit for technology products that need to feel capable and calm. There's a reason Facebook, LinkedIn, Twitter, and IBM all chose blue as their primary brand color.</p>
+                    <p>Research in color psychology consistently shows that blue evokes feelings of trust, security, and competence — exactly what tech companies want users to feel when interacting with their products.</p>
+
+                    <h2>Digital interfaces</h2>
+                    <p>On dark UIs, blue accents provide contrast without the aggression of red or the fatigue of pure white highlights. Subtle glow effects reinforce hierarchy and interactivity.</p>
+                    <p>The key principles for using blue in interfaces:</p>
+                    <ul>
+                        <li><strong>Hierarchy:</strong> Use brighter blues for primary actions, muted blues for secondary elements</li>
+                        <li><strong>Contrast:</strong> Blue on dark backgrounds creates a natural focal point without overwhelming</li>
+                        <li><strong>Consistency:</strong> A single blue hue with varied opacity creates cohesion across components</li>
+                    </ul>
+
+                    <h2>Using color intentionally</h2>
+                    <p>Pair accent blue with neutral grays, limit saturation in body text areas, and reserve the brightest blues for calls to action and focus states. The goal is to guide the eye, not overwhelm it.</p>
+                `
+            }
+        };
+
+        if (articleId && articles[articleId]) {
+            const article = articles[articleId];
+            document.title = `${article.title} — Prasad Priyadarshana`;
+            document.getElementById('detail-title').textContent = article.title;
+            document.getElementById('detail-desc').textContent = article.desc;
+            document.getElementById('detail-content').innerHTML = article.content;
+
+            ['detail-date', 'detail-date-2'].forEach((id) => {
+                const el = document.getElementById(id);
+                if (el) el.textContent = article.date;
+            });
+            ['detail-read-time', 'detail-read-time-2'].forEach((id) => {
+                const el = document.getElementById(id);
+                if (el) el.textContent = article.readTime;
+            });
+
+            // Render tags
+            const tagsContainer = document.getElementById('detail-tags');
+            if (article.tags && article.tags.length) {
+                tagsContainer.innerHTML = article.tags
+                    .map(tag => `<span class="tag">${tag}</span>`)
+                    .join('');
+            }
+        }
+    </script>
+</body>
+
+</html>

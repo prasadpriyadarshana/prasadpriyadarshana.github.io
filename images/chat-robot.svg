@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" fill="none">
+  <!-- Glow platform -->
+  <ellipse cx="60" cy="105" rx="35" ry="8" fill="url(#glow)"/>
+  
+  <!-- Body -->
+  <rect x="38" y="58" width="44" height="35" rx="12" fill="#f0f4ff" stroke="#d0d8f0" stroke-width="1.5"/>
+  
+  <!-- Head -->
+  <rect x="32" y="22" width="56" height="40" rx="18" fill="#f8faff" stroke="#d0d8f0" stroke-width="1.5"/>
+  
+  <!-- Face screen -->
+  <rect x="40" y="30" width="40" height="24" rx="10" fill="#0a1628"/>
+  
+  <!-- Eyes -->
+  <circle cx="50" cy="42" r="6" fill="#4de8e0">
+    <animate attributeName="r" values="6;5;6" dur="3s" repeatCount="indefinite"/>
+  </circle>
+  <circle cx="70" cy="42" r="6" fill="#4de8e0">
+    <animate attributeName="r" values="6;5;6" dur="3s" repeatCount="indefinite"/>
+  </circle>
+  
+  <!-- Eye shine -->
+  <circle cx="48" cy="40" r="2" fill="#fff" opacity="0.7"/>
+  <circle cx="68" cy="40" r="2" fill="#fff" opacity="0.7"/>
+  
+  <!-- Antenna -->
+  <line x1="60" y1="22" x2="60" y2="12" stroke="#b0b8d0" stroke-width="2" stroke-linecap="round"/>
+  <circle cx="60" cy="10" r="4" fill="#34d399">
+    <animate attributeName="opacity" values="1;0.4;1" dur="2s" repeatCount="indefinite"/>
+  </circle>
+  
+  <!-- Arms -->
+  <circle cx="30" cy="72" r="6" fill="#e8ecf8" stroke="#c0c8e0" stroke-width="1"/>
+  <rect x="34" y="68" width="6" height="14" rx="3" fill="#e0e4f0"/>
+  <circle cx="90" cy="72" r="6" fill="#e8ecf8" stroke="#c0c8e0" stroke-width="1"/>
+  <rect x="80" y="68" width="6" height="14" rx="3" fill="#e0e4f0"/>
+  
+  <!-- Arm glow dots -->
+  <circle cx="30" cy="76" r="2.5" fill="#ff8a9e" opacity="0.8">
+    <animate attributeName="opacity" values="0.8;0.3;0.8" dur="2.5s" repeatCount="indefinite"/>
+  </circle>
+  <circle cx="90" cy="76" r="2.5" fill="#ff8a9e" opacity="0.8">
+    <animate attributeName="opacity" values="0.8;0.3;0.8" dur="2.5s" repeatCount="indefinite" begin="0.5s"/>
+  </circle>
+  
+  <!-- Feet -->
+  <rect x="43" y="90" width="12" height="10" rx="5" fill="#e0e4f0" stroke="#c0c8e0" stroke-width="1"/>
+  <rect x="65" y="90" width="12" height="10" rx="5" fill="#e0e4f0" stroke="#c0c8e0" stroke-width="1"/>
+  
+  <defs>
+    <radialGradient id="glow" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0%" stop-color="#34d399" stop-opacity="0.6"/>
+      <stop offset="60%" stop-color="#34d399" stop-opacity="0.2"/>
+      <stop offset="100%" stop-color="#34d399" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+</svg>

@@ -1,0 +1,101 @@
+/* ===== Chat Widget — FAB Button Only ===== */
+/* The chat panel is now a separate page (chat.html) */
+
+.chat-fab {
+    position: relative;
+    width: 72px;
+    height: 72px;
+    border-radius: 50%;
+    background: radial-gradient(circle at 50% 80%, rgba(5, 150, 105, 0.08), transparent 70%),
+                linear-gradient(180deg, #ffffff 0%, #e8eeff 100%);
+    border: 1px solid rgba(5, 150, 105, 0.35);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px;
+    box-shadow: 0 4px 20px rgba(5, 150, 105, 0.2), 0 2px 12px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 10000;
+    overflow: visible;
+    color: transparent;
+    font-size: 0;
+    animation: fab-float 3s ease-in-out infinite;
+}
+
+@keyframes fab-float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-6px); }
+}
+
+.chat-fab i { display: none; }
+
+.chat-fab img {
+    width: 54px;
+    height: 54px;
+    object-fit: contain;
+    filter: drop-shadow(0 2px 8px rgba(5, 150, 105, 0.3));
+    transition: transform 0.3s ease;
+}
+
+.chat-fab-wrapper {
+    position: fixed;
+    bottom: 5.5rem;
+    right: 1.25rem;
+    z-index: 10000;
+}
+
+.chat-fab-tooltip {
+    position: absolute;
+    bottom: 80px;
+    right: 0;
+    background: #ffffff;
+    color: #333;
+    font-size: 0.8rem;
+    font-weight: 600;
+    padding: 0.5rem 0.85rem;
+    border-radius: 10px;
+    white-space: nowrap;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(4px);
+    transition: all 0.25s ease;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+    pointer-events: none;
+}
+
+.chat-fab-tooltip::after {
+    content: '';
+    position: absolute;
+    top: 100%;
+    right: 24px;
+    border: 6px solid transparent;
+    border-top-color: #ffffff;
+}
+
+.chat-fab:hover + .chat-fab-tooltip,
+.chat-fab-wrapper:hover .chat-fab-tooltip {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.chat-fab:hover {
+    animation-play-state: paused;
+    transform: translateY(-3px);
+    border-color: rgba(5, 150, 105, 0.6);
+    box-shadow: 0 8px 28px rgba(5, 150, 105, 0.3), 0 4px 16px rgba(0, 0, 0, 0.12);
+}
+
+.chat-fab:hover img {
+    transform: scale(1.05);
+}
+
+/* Mobile */
+@media (max-width: 480px) {
+    .chat-fab-wrapper {
+        bottom: 5.25rem;
+        right: 1rem;
+    }
+}

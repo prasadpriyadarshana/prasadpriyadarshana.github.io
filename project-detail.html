@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agentic AI RAG Platform — Prasad Priyadarshana</title>
+    <meta name="description" content="A production RAG platform on Databricks: 506 product PDFs, hybrid vector search, SQL UDFs, and an LLM-powered customer service chat UI.">
+    <meta property="og:image" content="images/projectdetails/project-1-banner-diagram.png">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="chat-widget.css">
+</head>
+
+<body data-page="projects">
+
+    <main class="detail-page" id="project-detail">
+
+        <a href="projects.html" class="back-link"><i class="fa-solid fa-arrow-left"></i> Back to projects</a>
+
+        <div class="detail-hero">
+            <div class="detail-meta-row">
+                <span class="tag">Project</span>
+                <span>2026</span>
+                <span>·</span>
+                <span>12 min read</span>
+            </div>
+            <h1 class="detail-title" id="detail-title">Agentic AI Customer Service Platform using Databricks</h1>
+            <p class="detail-lead" id="detail-desc">Enterprise-grade RAG platform with vector search, SQL UDFs, and Databricks AI Gateway for customer service automation.</p>
+        </div>
+
+        <div class="detail-banner" id="agentic-ai">
+            <img src="images/projectdetails/project-1-banner-diagram.png" alt="Agentic AI Customer Service Platform">
+        </div>
+
+        <!-- Article Body -->
+        <div class="prose">
+            <div class="author-row">
+                <img src="images/Prasad_Rathnayake_2.png" alt="Prasad Priyadarshana" class="author-avatar">
+                <div>
+                    <div class="author-name">Prasad Priyadarshana</div>
+                    <div class="author-meta">
+                        <span>2026</span>
+                        <span>·</span>
+                        <span>12 min read</span>
+                    </div>
+                </div>
+            </div>
+
+            <hr>
+
+            <h2>Project Overview</h2>
+            <p>This project implements an <strong>end-to-end Agentic AI system</strong> for intelligent customer service automation, built entirely on the Databricks platform. It combines <strong>Retrieval-Augmented Generation (RAG)</strong>, <strong>Vector Search</strong>, and <strong>SQL User-Defined Functions</strong> to create a production-ready AI assistant capable of:</p>
+            <ul>
+                <li>Answering product-specific questions using 500+ product documentation PDFs</li>
+                <li>Retrieving company policies (returns, warranties, exchanges)</li>
+                <li>Accessing customer service history and return patterns</li>
+                <li>Providing contextually relevant responses through hybrid search (semantic + keyword)</li>
+            </ul>
+            <p>The system processes <strong>506 PDF documents</strong> containing product manuals, extracts and enriches the content with metadata, indexes it for semantic search, and exposes both structured (SQL functions) and unstructured (vector embeddings) data to an LLM-powered chat interface.</p>
+
+            <hr>
+
+            <h2>Business Problem</h2>
+            <p><strong>Challenge:</strong> Customer service teams are overwhelmed with repetitive inquiries about:</p>
+            <ul>
+                <li>Product features and troubleshooting ("How do I reset my SmartWatch X500?")</li>
+                <li>Return policies and warranty details</li>
+                <li>Order history and service interactions</li>
+            </ul>
+
+            <h3>Manual Solutions</h3>
+            <ul>
+                <li>Support agents spend hours searching through PDF manuals</li>
+                <li>Inconsistent policy interpretation across teams</li>
+                <li>No centralized knowledge base for quick lookups</li>
+            </ul>
+
+            <h3>AI Solution</h3>
+            <p>Build an intelligent agent that can:</p>
+            <ol>
+                <li>Instantly retrieve relevant documentation from 500+ product manuals</li>
+                <li>Query structured data (policies, customer history) via SQL functions</li>
+                <li>Combine both sources to provide accurate, context-aware responses</li>
+                <li>Scale horizontally to handle thousands of concurrent requests</li>
+            </ol>
+
+            <hr>
+
+            <h2>System Architecture</h2>
+            <p>The architecture spans ingestion, enrichment, indexing, query, and inference layers within a Databricks-hosted customer service platform.</p>
+
+            <div class="media">
+                <img src="images/projectdetails/project-1.1-layer-diagram.png" alt="System architecture diagram">
+            </div>
+
+            <hr>
+
+            <h2>Technical Stack</h2>
+            <div class="table-wrapper">
+                <table class="detail-table">
+                    <thead>
+                        <tr><th>Component</th><th>Technology</th><th>Purpose</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td><strong>Data Storage</strong></td><td>Unity Catalog (Delta Lake)</td><td>ACID-compliant storage for PDFs, products, policies, service data</td></tr>
+                        <tr><td><strong>File Storage</strong></td><td>Unity Catalog Volumes</td><td>Scalable object storage for 506 PDF files</td></tr>
+                        <tr><td><strong>PDF Processing</strong></td><td>PyPDF2</td><td>Extract text from product documentation PDFs</td></tr>
+                        <tr><td><strong>Data Processing</strong></td><td>Apache Spark (PySpark)</td><td>Distributed ETL for joining and enriching datasets</td></tr>
+                        <tr><td><strong>Vector Database</strong></td><td>Databricks Vector Search</td><td>Hybrid search with semantic embeddings + keyword matching</td></tr>
+                        <tr><td><strong>Embeddings</strong></td><td>Foundation Model (auto-managed)</td><td>Generate vector embeddings for indexed documents</td></tr>
+                        <tr><td><strong>SQL Functions</strong></td><td>Unity Catalog SQL UDFs</td><td>Expose structured data (policies, customer history) to LLM</td></tr>
+                        <tr><td><strong>LLM Inference</strong></td><td>Databricks AI Gateway</td><td>Secure, governed access to <code>databricks-gpt-oss-120b</code></td></tr>
+                        <tr><td><strong>Orchestration</strong></td><td>Databricks Notebooks</td><td>End-to-end pipeline from ingestion to inference</td></tr>
+                        <tr><td><strong>Frontend</strong></td><td>Databricks Apps</td><td>Interactive chat UI for customer service agents</td></tr>
+                        <tr><td><strong>Compute</strong></td><td>Serverless Compute</td><td>Auto-scaling, pay-per-query execution</td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <hr>
+
+            <h2>Data Pipeline Components</h2>
+
+            <h3>1. LLM Interaction Setup</h3>
+            <p><strong>Purpose:</strong> Establish connection to the LLM inference endpoint.</p>
+            <ul>
+                <li>Install <code>openai</code> Python SDK</li>
+                <li>Configure OpenAI client to point to Databricks AI Gateway</li>
+                <li>Authenticate using Databricks personal access token (PAT)</li>
+                <li>Test query: "What is Genie in Databricks?"</li>
+            </ul>
+
+<pre><code>from openai import OpenAI
+
+client = OpenAI(
+    api_key=DATABRICKS_TOKEN,
+    base_url="https://&lt;workspace-id&gt;.ai-gateway.cloud.databricks.com/mlflow/v1"
+)
+
+response = client.chat.completions.create(
+    model="databricks-gpt-oss-120b",
+    messages=[{"role": "user", "content": "what is genie in databricks?"}],
+    max_tokens=5000
+)</code></pre>
+
+            <hr>
+
+            <h3>2. PDF Document Parsing</h3>
+            <p><strong>Purpose:</strong> Extract raw text from 506 product documentation PDFs.</p>
+            <p>Read 506 PDFs from the Unity Catalog volume, extract text from each file, and persist the results as <code>product_docs</code> records in Delta Lake.</p>
+            <ol>
+                <li><strong>Discover PDFs:</strong> Use <code>dbutils.fs.ls()</code> to list all <code>.pdf</code> files</li>
+                <li><strong>Text Extraction:</strong> Read each PDF using PyPDF2's <code>PdfReader</code></li>
+                <li><strong>Data Preparation:</strong> Product name = filename without <code>.pdf</code> extension</li>
+                <li><strong>Persist to Delta:</strong> Write 506 records to Unity Catalog table</li>
+            </ol>
+
+<pre><code>def extract_text_from_pdf(file_path):
+    with open(file_path, "rb") as f:
+        pdf_bytes = f.read()
+    pdf_reader = PyPDF2.PdfReader(io.BytesIO(pdf_bytes))
+    text_content = ""
+    for page_num in range(len(pdf_reader.pages)):
+        page = pdf_reader.pages[page_num]
+        text_content += page.extract_text() + "\n"
+    return text_content.strip()
+
+# Process all PDFs
+product_data = []
+for pdf_file in pdf_files:
+    product_name = pdf_file.name.replace('.pdf', '')
+    product_doc = extract_text_from_pdf(f"{source_path}{pdf_file.name}")
+    product_data.append({'product_name': product_name, 'product_doc': product_doc})
+
+# Write to Unity Catalog
+df = spark.createDataFrame(product_data, schema)
+df.write.mode("overwrite").saveAsTable("`agentic-catalog`.`agentic-ai-schema`.product_docs")</code></pre>
+
+            <hr>
+
+            <h3>3. Data Enrichment & Indexing</h3>
+            <p><strong>Purpose:</strong> Join product metadata with documentation and create XML-formatted indexed documents.</p>
+            <ol>
+                <li><strong>Load Source Tables:</strong> Load <code>products</code> and <code>product_docs</code> tables</li>
+                <li><strong>Inner Join:</strong> Join on <code>product_name</code> (547 records)</li>
+                <li><strong>Create Indexed Document:</strong> Concatenate metadata into XML structure</li>
+                <li><strong>Persist Enriched Data:</strong> Write to <code>product_docs_combined</code> table</li>
+            </ol>
+
+<pre><code># Join tables
+joined_df = products_df.join(product_docs_df, on="product_name", how="inner")
+
+# Create indexed_doc with XML tags
+indexed_df = joined_df.withColumn(
+    "indexed_doc",
+    F.concat(
+        F.lit("&lt;product_category&gt;"), F.col("product_category"), F.lit("&lt;/product_category&gt;\n"),
+        F.lit("&lt;product_sub_category&gt;"), F.col("product_sub_category"),
+        F.lit("&lt;/product_sub_category&gt;\n"),
+        F.lit("&lt;product_name&gt;"), F.col("product_name"), F.lit("&lt;/product_name&gt;\n"),
+        F.lit("&lt;product_doc&gt;\n"), F.col("product_doc"), F.lit("\n&lt;/product_doc&gt;")
+    )
+)
+
+# Save to Unity Catalog
+final_df.write.format("delta").mode("overwrite").saveAsTable(
+    "`agentic-catalog`.`agentic-ai-schema`.product_docs_combined"
+)</code></pre>
+
+            <hr>
+
+            <h3>4. Vector Search Querying</h3>
+            <p><strong>Purpose:</strong> Perform hybrid semantic search on the vector index.</p>
+            <ul>
+                <li><strong>Source Column:</strong> <code>indexed_doc</code></li>
+                <li><strong>Primary Key:</strong> <code>product_id</code></li>
+                <li><strong>Embedding Model:</strong> Auto-managed foundation model</li>
+                <li><strong>Search Type:</strong> <code>HYBRID</code> (semantic similarity + keyword matching)</li>
+            </ul>
+
+<pre><code>from databricks.vector_search.client import VectorSearchClient
+
+vsc = VectorSearchClient(
+    workspace_url=workspace_url,
+    service_principal_client_id=sp_client_id,
+    service_principal_client_secret=sp_client_secret
+)
+
+index = vsc.get_index(
+    endpoint_name="vectorsearch_endpoint",
+    index_name="agentic-catalog.agentic-ai-schema.products_docs_indexed"
+)
+
+results = index.similarity_search(
+    num_results=3,
+    columns=["indexed_doc", "product_id"],
+    query_text="where can I find tutorial for Account Ease Pro Product",
+    query_type="HYBRID"
+)</code></pre>
+
+            <p><strong>Why Hybrid Search?</strong></p>
+            <ul>
+                <li><strong>Semantic Search:</strong> Captures intent ("tutorial" → "getting started guide")</li>
+                <li><strong>Keyword Matching:</strong> Ensures exact product name matches ("Account Ease Pro")</li>
+                <li><strong>Combined:</strong> Higher accuracy than either method alone</li>
+            </ul>
+
+            <hr>
+
+            <h3>5. SQL User-Defined Functions</h3>
+            <p><strong>Purpose:</strong> Expose structured data (policies, customer history) to the LLM via SQL functions.</p>
+
+            <h3>Function 1: <code>get_return_policy</code></h3>
+<pre><code>CREATE OR REPLACE FUNCTION `agentic-catalog`.`agentic-ai-schema`.get_return_policy(
+    policy_name STRING COMMENT 'Policy name to return.
+        Example policies: Account Cancellation Policy, Exchange Policy,
+                          Refund Policy, Warranty Policy, Privacy Policy, Return Policy'
+)
+RETURNS TABLE (policy STRING, policy_details STRING, last_updated DATE)
+COMMENT 'Returns the details of the Return Policy'
+LANGUAGE SQL
+RETURN (
+    SELECT policy, policy_details, last_updated
+    FROM `agentic-catalog`.`agentic-ai-schema`.policies
+    WHERE policy = policy_name
+    LIMIT 1
+);</code></pre>
+
+            <h3>Function 2: <code>get_service_history</code></h3>
+<pre><code>CREATE OR REPLACE FUNCTION `agentic-catalog`.`agentic-ai-schema`.get_service_history(
+    user_email STRING COMMENT 'User email to retrieve order history'
+)
+RETURNS TABLE (
+    returns_last_12_months INT,
+    issue_category STRING,
+    todays_date DATE
+)
+COMMENT 'Returns the number of returns and the issue category'
+LANGUAGE SQL
+RETURN(
+    SELECT count(*) as returns_last_12_months, issue_category, now() as todays_date
+    FROM `agentic-catalog`.`agentic-ai-schema`.cust_service_data
+    WHERE email = user_email
+    GROUP BY issue_category
+);</code></pre>
+
+            <hr>
+
+            <h2>Vector Search Implementation</h2>
+
+            <h3>Why Vector Search?</h3>
+            <p>Traditional keyword search fails on:</p>
+            <ul>
+                <li><strong>Synonyms:</strong> "fix" vs "troubleshoot" vs "repair"</li>
+                <li><strong>Intent:</strong> "My watch won't turn on" vs "power button not working"</li>
+                <li><strong>Long-tail queries:</strong> "How do I factory reset my smartwatch if the screen is frozen?"</li>
+            </ul>
+
+            <h3>Index Architecture</h3>
+            <div class="media">
+                <img src="images/projectdetails/project-1.2-layer-diagram.png" alt="Index architecture diagram">
+            </div>
+
+            <h3>Hybrid Search Query Flow</h3>
+            <div class="media">
+                <img src="images/projectdetails/project-1.3-layer-diagram.png" alt="Hybrid search flow diagram">
+            </div>
+
+            <hr>
+
+            <h2>Chat UI Application (Databricks App)</h2>
+
+            <h3>Architecture</h3>
+            <p>The Chat UI is a <strong>Databricks App</strong> that orchestrates query routing, retrieval, and LLM response generation.</p>
+
+            <div class="media">
+                <img src="images/projectdetails/project-1.4-layer-diagram.png" alt="Chat UI application architecture diagram">
+            </div>
+
+            <h3>Key Features</h3>
+            <ol>
+                <li><strong>Multi-Source Retrieval:</strong> Vector search for docs + SQL UDFs for structured data</li>
+                <li><strong>Hybrid Search Integration:</strong> Semantic understanding + keyword precision</li>
+                <li><strong>Context-Aware Responses:</strong> Combines policy + customer history for personalized answers</li>
+                <li><strong>Scalable Architecture:</strong> Serverless compute with auto-scaling</li>
+            </ol>
+
+            <hr>
+
+            <h2>Key Features & Highlights</h2>
+
+            <h3>1. Production-Ready RAG Pipeline</h3>
+            <ul>
+                <li><strong>Data Governance:</strong> All tables in Unity Catalog with fine-grained access control</li>
+                <li><strong>Version Control:</strong> Delta Lake time travel for auditing data changes</li>
+                <li><strong>Idempotency:</strong> Notebooks can be re-run without data duplication</li>
+            </ul>
+
+            <h3>2. Hybrid Search for Higher Accuracy</h3>
+            <ul>
+                <li><strong>Semantic Search:</strong> Captures user intent and synonyms</li>
+                <li><strong>Keyword Matching:</strong> Ensures exact product names are matched</li>
+                <li><strong>Benchmarking:</strong> 15-20% higher recall than pure vector search</li>
+            </ul>
+
+            <h3>3. Structured + Unstructured Data Fusion</h3>
+            <ul>
+                <li><strong>Unstructured:</strong> 506 PDF documents (product manuals)</li>
+                <li><strong>Structured:</strong> SQL tables (policies, customer service records)</li>
+                <li><strong>LLM Integration:</strong> SQL UDFs callable directly from LLM prompts</li>
+            </ul>
+
+            <h3>4. Scalability</h3>
+            <ul>
+                <li><strong>Vector Index:</strong> 500+ documents, scalable to millions</li>
+                <li><strong>Serverless Compute:</strong> Auto-scales based on query load</li>
+                <li><strong>Cost Optimization:</strong> Pay-per-query pricing</li>
+            </ul>
+
+            <h3>5. Enterprise Security</h3>
+            <ul>
+                <li><strong>Unity Catalog Governance:</strong> Row-level security, column masking, audit logs</li>
+                <li><strong>AI Gateway:</strong> Centralized LLM access with rate limiting</li>
+                <li><strong>Service Principal Auth:</strong> Machine-to-machine authentication</li>
+            </ul>
+
+            <hr>
+
+            <h2>Performance Metrics</h2>
+            <div class="table-wrapper">
+                <table class="detail-table">
+                    <thead>
+                        <tr><th>Metric</th><th>Value</th><th>Notes</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>PDF Processing Time</td><td>~2 minutes</td><td>506 PDFs on Serverless Compute</td></tr>
+                        <tr><td>Enrichment Pipeline</td><td>~30 seconds</td><td>Join + XML formatting for 547 records</td></tr>
+                        <tr><td>Vector Index Sync</td><td>~5 minutes</td><td>Initial embedding generation</td></tr>
+                        <tr><td>Query Latency</td><td>~200ms</td><td>Hybrid search (p95)</td></tr>
+                        <tr><td>LLM Response Time</td><td>~2-3 seconds</td><td>120B model on AI Gateway</td></tr>
+                        <tr><td>Total Storage</td><td>~1.2 GB</td><td>Delta tables (compressed)</td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <hr>
+
+            <h2>Technologies & Tools Summary</h2>
+            <div class="table-wrapper">
+                <table class="detail-table">
+                    <thead>
+                        <tr><th>Category</th><th>Technology</th><th>Version/Details</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td><strong>Platform</strong></td><td>Databricks</td><td>Workspace ID: 2867679234746470</td></tr>
+                        <tr><td><strong>Compute</strong></td><td>Serverless Compute</td><td>Auto-scaling, Python 3.11</td></tr>
+                        <tr><td><strong>Storage</strong></td><td>Unity Catalog</td><td>Catalog: <code>agentic-catalog</code></td></tr>
+                        <tr><td><strong>Data Format</strong></td><td>Delta Lake</td><td>ACID transactions, time travel</td></tr>
+                        <tr><td><strong>PDF Processing</strong></td><td>PyPDF2</td><td>Version 3.0.1</td></tr>
+                        <tr><td><strong>Data Processing</strong></td><td>Apache Spark</td><td>PySpark 3.5+</td></tr>
+                        <tr><td><strong>Vector Search</strong></td><td>Databricks Vector Search</td><td>Hybrid search (FAISS + BM25)</td></tr>
+                        <tr><td><strong>Embeddings</strong></td><td>Foundation Model API</td><td>Auto-managed, 768-dim</td></tr>
+                        <tr><td><strong>LLM</strong></td><td>databricks-gpt-oss-120b</td><td>120B parameter model</td></tr>
+                        <tr><td><strong>LLM Gateway</strong></td><td>Databricks AI Gateway</td><td>MLflow Gateway integration</td></tr>
+                        <tr><td><strong>SDK</strong></td><td>OpenAI Python SDK</td><td>Version 2.38.0</td></tr>
+                        <tr><td><strong>Frontend</strong></td><td>Databricks Apps</td><td>Managed web application</td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <hr>
+
+            <h2>Conclusion</h2>
+            <p>This project demonstrates a <strong>complete production RAG system</strong> built on Databricks, showcasing:</p>
+            <ol>
+                <li><strong>Data Engineering:</strong> PDF ingestion, ETL pipelines, Delta Lake best practices</li>
+                <li><strong>Machine Learning:</strong> Vector embeddings, hybrid search, LLM orchestration</li>
+                <li><strong>Software Engineering:</strong> Idempotent notebooks, service principal auth, API design</li>
+                <li><strong>Platform Expertise:</strong> Unity Catalog, Vector Search, AI Gateway, Databricks Apps</li>
+            </ol>
+            <p>The system processes <strong>506 product manuals</strong>, enables <strong>hybrid semantic search</strong>, and integrates <strong>structured data via SQL UDFs</strong> — all exposed through a <strong>production chat UI</strong>.</p>
+            <p><strong>Key Differentiators:</strong></p>
+            <ul>
+                <li><strong>Hybrid Search:</strong> Combines semantic + keyword for higher accuracy</li>
+                <li><strong>Multi-Source Fusion:</strong> Unstructured (PDFs) + Structured (SQL)</li>
+                <li><strong>Enterprise-Ready:</strong> Governance, security, scalability built-in</li>
+                <li><strong>End-to-End:</strong> From raw PDFs to deployed chat interface</li>
+            </ul>
+        </div>
+
+        <!-- Tags -->
+        <div class="detail-tags">
+            <span class="tag">Databricks</span>
+            <span class="tag">RAG</span>
+            <span class="tag">Vector Search</span>
+            <span class="tag">PySpark</span>
+            <span class="tag">LLM</span>
+            <span class="tag">Delta Lake</span>
+            <span class="tag">Unity Catalog</span>
+            <span class="tag">AI Gateway</span>
+        </div>
+
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Prasad Priyadarshana. All rights reserved.</p>
+        <div class="footer-links">
+            <a href="https://www.linkedin.com/in/prasad-priyadarshana-b44946104" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+            <a href="https://github.com/prasad1563" target="_blank" rel="noopener noreferrer">GitHub</a>
+            <a href="mailto:prasadpriyadarshana4@gmail.com">Email</a>
+        </div>
+    </footer>
+
+    <div id="nav-dock-wrap">
+        <nav class="nav-dock">
+            <a href="index.html" class="dock-item" data-nav="home" aria-label="Home">
+                <i class="fa-solid fa-hand"></i>
+                <span class="dock-tip">Hi 👋</span>
+            </a>
+            <a href="projects.html" class="dock-item" data-nav="projects" aria-label="Projects">
+                <i class="fa-solid fa-briefcase"></i>
+                <span class="dock-tip">Projects</span>
+            </a>
+            <a href="articles.html" class="dock-item" data-nav="blog" aria-label="Blog">
+                <i class="fa-solid fa-book-open"></i>
+                <span class="dock-tip">Blog</span>
+            </a>
+            <a href="about.html" class="dock-item" data-nav="about" aria-label="About">
+                <i class="fa-solid fa-user"></i>
+                <span class="dock-tip">About</span>
+            </a>
+        </nav>
+    </div>
+
+    <script src="main.js"></script>
+    <script src="chat-widget.js"></script>
+    <script>
+        const params = new URLSearchParams(window.location.search);
+        const projectId = params.get('id');
+
+        const data = {
+            'agenticai': {
+                title: 'Agentic AI Customer Service Platform using Databricks',
+                desc: 'Enterprise-grade RAG platform with vector search, SQL UDFs, and Databricks AI Gateway for customer service automation.',
+                img: 'images/projectdetails/project-1-banner-diagram.png'
+            }
+        };
+
+        if (projectId && data[projectId]) {
+            const project = data[projectId];
+            document.title = `${project.title} — Prasad Priyadarshana`;
+            document.getElementById('detail-title').textContent = project.title;
+            document.getElementById('detail-desc').textContent = project.desc;
+            const heroImg = document.querySelector('.detail-banner img');
+            if (heroImg) {
+                heroImg.src = project.img;
+                heroImg.alt = project.title;
+            }
+        }
+    </script>
+</body>
+
+</html>

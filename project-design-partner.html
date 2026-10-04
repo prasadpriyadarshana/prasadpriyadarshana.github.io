@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Design Partner Reporting — Prasad Priyadarshana</title>
+    <meta name="description" content="Multi-region Power BI reporting architecture consolidating three regional Synapse environments via Databricks into a single Fabric Lakehouse.">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="chat-widget.css">
+</head>
+<body data-page="projects">
+<main class="detail-page">
+
+    <a href="projects.html" class="back-link"><i class="fa-solid fa-arrow-left"></i> Back to projects</a>
+
+    <div class="detail-hero">
+        <div class="detail-meta-row">
+            <span class="tag">Client Project</span>
+            <span>SEER 365 (UK)</span>
+            <span>·</span>
+            <span>Apr 2023 – Present</span>
+            <span>·</span>
+            <span>Architect</span>
+        </div>
+        <h1 class="detail-title">Design Partner Reporting</h1>
+        <p class="detail-lead">A two-phase reporting platform evolution — from SQL Server DirectQuery optimisation to a multi-region Lakehouse architecture consolidating three regional Dataverse environments into a single unified reporting platform, saving £3,500/month.</p>
+    </div>
+
+    <div class="detail-banner" style="background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%); min-height: 220px; display:flex; align-items:center; justify-content:center; border-radius:16px;">
+        <div style="text-align:center; color:#fff;">
+            <div style="font-size:3rem; margin-bottom:1rem;">🌍</div>
+            <div style="font-family:'DM Mono',monospace; font-size:0.9rem; color:#00df73; letter-spacing:0.08em;">3 Regions → 1 Unified Lakehouse</div>
+            <div style="font-size:1.3rem; font-weight:600; margin-top:0.5rem;">Multi-Region Partner Reporting</div>
+            <div style="font-size:0.85rem; color:#94a3b8; margin-top:0.4rem;">£3,500/month saved · 150% query performance improvement</div>
+        </div>
+    </div>
+
+    <div class="prose">
+        <div class="author-row">
+            <img src="images/Prasad_Rathnayake_2.png" alt="Prasad Priyadarshana" class="author-avatar">
+            <div>
+                <div class="author-name">Prasad Priyadarshana</div>
+                <div class="author-meta"><span>Apr 2023 – Present</span><span>·</span><span>Architect</span></div>
+            </div>
+        </div>
+
+        <hr>
+
+        <h2>Phase 1 — Design V1: DirectQuery Optimisation</h2>
+        <p><em>April 2023 to August 2024</em></p>
+
+        <h3>Architecture</h3>
+        <p>Designed and implemented a <strong>Power BI DirectQuery architecture</strong> for near-real-time reporting directly against the client's SQL Server data source. Since SQL Server was the client's primary system of record, the solution was architected to leverage the existing database rather than introducing an additional replication layer.</p>
+
+        <h3>Optimisations Applied</h3>
+        <ul>
+            <li><strong>Native SQL query optimisation:</strong> Replaced Power BI auto-generated queries with hand-crafted native SQL queries tuned for the specific reporting patterns</li>
+            <li><strong>Indexing strategy:</strong> Implemented appropriate indexing across underlying tables to improve query execution and reduce database response times</li>
+            <li><strong>Apply Slicer functionality:</strong> Implemented manual apply-filter controls across report pages, allowing users to configure multiple filters before triggering query execution — significantly reducing redundant DirectQuery requests</li>
+        </ul>
+
+        <h3>Results</h3>
+        <ul>
+            <li><strong>~150% improvement</strong> in Power BI query-loading performance from SQL optimisation</li>
+            <li><strong>Further 150% improvement</strong> from Apply Slicer implementation reducing redundant queries</li>
+        </ul>
+
+        <hr>
+
+        <h2>Phase 2 — Design V2: Multi-Region Lakehouse Architecture</h2>
+        <p><em>September 2023 to Present</em></p>
+
+        <h3>Problem</h3>
+        <p>As business requirements expanded, the data landscape became <strong>geographically distributed across multiple regions</strong>, requiring a scalable architecture capable of consolidating regional data while maintaining data locality and performance. Microsoft Dataverse became the primary backend data source across three regions.</p>
+
+        <h3>Architecture</h3>
+        <ul>
+            <li><strong>Three regional Azure Synapse Analytics environments</strong> using Synapse Link for Dataverse to replicate regional data locally in near-real-time</li>
+            <li><strong>Databricks PySpark</strong> used as the distributed processing engine for cross-region data transformations and standardisation</li>
+            <li><strong>Unified data model:</strong> Lakehouse data model designed to consolidate all three regions into a unified table structure using a <strong>star-schema approach</strong> with a dedicated Region attribute for region-level filtering</li>
+            <li><strong>Microsoft Fabric Lakehouses</strong> as the centralised storage and analytics layer</li>
+        </ul>
+
+        <h3>Results</h3>
+        <ul>
+            <li><strong>£3,500/month saved</strong> by consolidating three separate regional Synapse/Dataverse environments into a single Databricks transformation layer</li>
+            <li><strong>Single-pane visibility</strong> across all geographies for stakeholders for the first time</li>
+            <li>Both internal and external users can access and analyse data across multiple regions from a single platform</li>
+        </ul>
+
+        <hr>
+
+        <h2>Technical Stack</h2>
+        <div class="table-wrapper">
+            <table class="detail-table">
+                <thead><tr><th>Component</th><th>Technology</th></tr></thead>
+                <tbody>
+                    <tr><td>Source System</td><td>Microsoft Dataverse (3 regions) / SQL Server</td></tr>
+                    <tr><td>Ingestion (V1)</td><td>Power BI DirectQuery (native SQL)</td></tr>
+                    <tr><td>Ingestion (V2)</td><td>Azure Synapse Link for Dataverse (3 environments)</td></tr>
+                    <tr><td>Processing</td><td>Databricks PySpark (cross-region transforms)</td></tr>
+                    <tr><td>Storage</td><td>Microsoft Fabric Lakehouse (star schema)</td></tr>
+                    <tr><td>Reporting</td><td>Power BI (DirectQuery V1 / Import V2)</td></tr>
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+
+    <div class="detail-tags">
+        <span class="tag">Azure Synapse Analytics</span>
+        <span class="tag">Databricks</span>
+        <span class="tag">Microsoft Fabric</span>
+        <span class="tag">PySpark</span>
+        <span class="tag">Power BI</span>
+        <span class="tag">Dataverse</span>
+        <span class="tag">Multi-Region</span>
+        <span class="tag">Lakehouse</span>
+    </div>
+
+</main>
+
+<footer>
+    <p>&copy; 2026 Prasad Priyadarshana. All rights reserved.</p>
+    <div class="footer-links">
+        <a href="https://www.linkedin.com/in/prasad-priyadarshana-b44946104" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+        <a href="https://github.com/prasad1563" target="_blank" rel="noopener noreferrer">GitHub</a>
+        <a href="mailto:prasadpriyadarshana4@gmail.com">Email</a>
+    </div>
+</footer>
+
+<div id="nav-dock-wrap">
+    <nav class="nav-dock">
+        <a href="index.html" class="dock-item" data-nav="home" aria-label="Home"><i class="fa-solid fa-hand"></i><span class="dock-tip">Hi 👋</span></a>
+        <a href="projects.html" class="dock-item" data-nav="projects" aria-label="Projects"><i class="fa-solid fa-briefcase"></i><span class="dock-tip">Projects</span></a>
+        <a href="articles.html" class="dock-item" data-nav="blog" aria-label="Blog"><i class="fa-solid fa-book-open"></i><span class="dock-tip">Blog</span></a>
+        <a href="about.html" class="dock-item" data-nav="about" aria-label="About"><i class="fa-solid fa-user"></i><span class="dock-tip">About</span></a>
+    </nav>
+</div>
+<script src="main.js"></script>
+<script src="chat-widget.js"></script>
+</body>
+</html>
